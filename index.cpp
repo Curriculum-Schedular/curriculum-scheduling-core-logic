@@ -327,11 +327,11 @@ int32_t main() {
   // }
   
   find_electives();
-  cout << "[";
-  for (auto &elective: electives)
-    cout << "'" << elective << " - " << course_code_course_name[elective] << "', ";
-    cout << "]";
-  cout << endl;
+  // cout << "[";
+  // for (auto &elective: electives)
+  //   cout << "'" << elective << " - " << course_code_course_name[elective] << "', ";
+  //   cout << "]";
+  // cout << endl;
 
   // for (auto [course_code, v] : course_code_course_name) {
   //   cout << course_code << " " << indegree[course_code] << " " << outdegree[course_code] << endl;
@@ -377,7 +377,7 @@ int32_t main() {
   // }
 
   auto [elective_indegree, elective_graph] = get_graph_and_indegree_from_learning_tree(
-    get_learning_tree_for_elective(electives[9])
+    get_learning_tree_for_elective("CA004")
   );
   // for (auto &[pre, course_codes]: elective_graph) {
   //   cout << pre << " : ";
@@ -387,16 +387,16 @@ int32_t main() {
   //   cout << endl;
   // }
 
-  // auto course_start_week = top_sort(elective_indegree, elective_graph);
+  auto course_start_week = top_sort(elective_indegree, elective_graph);
 
-  // cout << "--------------------------------" << '\n';
-  // for (auto &[start_week, course_codes]: course_start_week) {
-  //   cout << start_week << ": ";
-  //   for (auto &course_code : course_codes) {
-  //     cout << course_code << " ";
-  //   }
-  //   cout << "\n";
-  // }
+  cout << "--------------------------------" << '\n';
+  for (auto &[start_week, course_codes]: course_start_week) {
+    cout << start_week << ": ";
+    for (auto &course_code : course_codes) {
+      cout << course_code << " ";
+    }
+    cout << "\n";
+  }
   
   return 0;
 }
